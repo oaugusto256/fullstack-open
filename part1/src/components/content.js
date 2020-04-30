@@ -3,10 +3,10 @@ import React from 'react'
 const Content = ({ content }) => {
   return (
     <>
-      {content.map(contentItem => {
+      {content.map(part => {
         return (
           <p>
-            {contentItem.part} {contentItem.exercises}
+            {part.name} {part.exercises}
           </p>
         )
       })}
