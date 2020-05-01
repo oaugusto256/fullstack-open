@@ -5,9 +5,14 @@ import './index.css';
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ])
+    {
+      name: 'Arto Hellas',
+      phone: '55 91 98214-5577'
+    }
+  ]);
+
   const [newName, setNewName] = useState('');
+  const [newPhone, setNewPhone] = useState('');
 
   const isNameAlreadyAdded = (name) => {
     return persons.some(person => person.name === name);
@@ -16,8 +21,8 @@ const App = () => {
   const handleAddNewPerson = (event) => {
     event.preventDefault();
 
-    if (newName === '') {
-      alert('Please, insert a person name before add.');
+    if (newName === '' || newPhone === '') {
+      alert('Please, insert a person name or phone before add.');
 
       return;
     }
@@ -29,14 +34,17 @@ const App = () => {
     }
 
     const personObject = {
-      name: newName
+      name: newName,
+      phone: newPhone
     };
 
     setPersons([
       ...persons,
       personObject
     ]);
+
     setNewName('');
+    setNewPhone('');
   }
 
   return (
@@ -45,6 +53,7 @@ const App = () => {
       <form>
         <div>
           name: <input value={newName} onChange={(event) => setNewName(event.target.value)} />
+          phone: <input value={newPhone} onChange={(event) => setNewPhone(event.target.value)} />
         </div>
         <div>
           <button onClick={handleAddNewPerson} type="submit">add</button>
@@ -53,7 +62,9 @@ const App = () => {
       <h2>Numbers</h2>
       <ul>
         {persons.map(person => (
-          <li key={person.name}>{person.name}</li>
+          <li key={person.name}>
+            {person.name} {person.phone}
+          </li>
         ))}
       </ul>
     </div>
