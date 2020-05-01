@@ -4,14 +4,14 @@ import Header from './header';
 import Content from './content';
 import Total from './total';
 
-const Course = ({ course }) => {
-  return (
-    <>
+const Courses = ({ courses }) => {
+  return courses.map(course => (
+    <div key={course.id}>
       <Header course={course.name} />
       <Content content={course.parts} />
       <Total content={course.parts} />
-    </>
-  )
+    </div>
+  ))
 }
 
-export default Course;
+export default Courses;
