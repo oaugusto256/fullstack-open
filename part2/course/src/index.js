@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './components/header';
-import Content from './components/content';
-import Total from './components/total';
+import Course from './components/course';
 
 const App = () => {
   const course = {
+    id: 1,
     name: 'Half Stack application development',
     parts: [
       {
+        id: 1,
         name: 'Fundamentals of React',
         exercises: 10
       },
       {
+        id: 2,
         name: 'Using props to pass data',
         exercises: 7
       },
       {
+        id: 3,
         name: 'State of a component',
         exercises: 14
       }
@@ -25,12 +27,8 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Header course={course.name} />
-      <Content content={course.parts} />
-      <Total content={course.parts} />
-    </div>
+    <Course course={course} />
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));
