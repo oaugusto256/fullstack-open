@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
@@ -12,21 +12,15 @@ const anecdotes = [
   'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
 ];
 
-const anecdotesVotesMock = {
-  0: 0,
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0
-};
+const anecdotesVotesArray = new Array(anecdotes.length).fill(0);
 
 const MIN_INDEX = 0;
 const MAX_INDEX = anecdotes.length;
 
 const App = (props) => {
   const [selected, setSelected] = useState(0);
-  const [anecdotesVotes, setAnecdotesVotes] = useState(anecdotesVotesMock);
+  const [mostVoted, setMostVoted] = useState(0);
+  const [anecdotesVotes, setAnecdotesVotes] = useState(anecdotesVotesArray);
 
   const handleDisplayRandomAnecdote = () => {
     const randomIndex = MIN_INDEX + Math.floor((MAX_INDEX - MIN_INDEX) * Math.random());
@@ -35,19 +29,33 @@ const App = (props) => {
   };
 
   const handleAnecdoteVote = () => {
-    const copy = { ...anecdotesVotes };
+    const copy = [...anecdotesVotes];
 
     copy[selected] += 1;
 
     setAnecdotesVotes(copy);
-  }
+  };
+
+  useEffect(() => {
+    const mostVotedIndex = anecdotesVotes.indexOf(Math.max(...anecdotesVotes));
+
+    setMostVoted(mostVotedIndex);
+  });
 
   return (
     <div>
-      <p>{props.anecdotes[selected]}</p>
-      <p>has {anecdotesVotes[selected]} votes</p>
-      <button onClick={handleAnecdoteVote}>Vote</button>
-      <button onClick={handleDisplayRandomAnecdote}>Get a random programming anecdote!</button>
+      <section>
+        <h1>Anecdote of the day</h1>
+        <p>{props.anecdotes[selected]}</p>
+        <p>has {anecdotesVotes[selected]} votes</p>
+        <button onClick={handleAnecdoteVote}>Vote</button>
+        <button onClick={handleDisplayRandomAnecdote}>Get a random programming anecdote!</button>
+      </section>
+      <section>
+        <h1>Anecdote with most votes</h1>
+        <p>{props.anecdotes[mostVoted]}</p>
+        <p>has {anecdotesVotes[mostVoted]} votes</p>
+      </section>
     </div>
   )
 }
