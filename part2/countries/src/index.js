@@ -42,7 +42,9 @@ const App = () => {
     <>
       <div>
         find countries <input onChange={handleCountryChanges} value={countryQuery} placeholder="Filter countries..." />
-        <CountriesToShow countries={countriesToShow} />
+        {countryQuery !== '' && (
+          <CountriesToShow countries={countriesToShow} />
+        )}
       </div>
     </>
   );
