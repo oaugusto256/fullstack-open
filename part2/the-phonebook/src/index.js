@@ -8,10 +8,12 @@ import './index.css';
 import Filter from './components/filter';
 import PersonForm from './components/personForm';
 import Persons from './components/persons';
+import Notification from "./components/notification";
 
 const App = () => {
-  const [personsFiltered, setPersonsFiltered] = useState([]);
   const [persons, setPersons] = useState([]);
+  const [personsFiltered, setPersonsFiltered] = useState([]);
+  const [notification, setNotification] = useState({ message: '', type: 'error', show: false });
 
   useEffect(() => {
     thePhonebookServices
@@ -29,6 +31,33 @@ const App = () => {
           ...persons,
           personCreated
         ]);
+
+        setNotification({
+          message: `${newPerson.name} added successfully!`,
+          type: 'success',
+          show: true
+        });
+
+        setTimeout(() => {
+          setNotification({
+            show: false,
+          });
+        }, 3000);
+      })
+      .catch(error => {
+        console.log(error);
+
+        setNotification({
+          message: 'An error has happened!',
+          type: 'error',
+          show: true
+        });
+
+        setTimeout(() => {
+          setNotification({
+            show: false,
+          });
+        }, 3000);
       });
   }
 
@@ -45,6 +74,31 @@ const App = () => {
             persons.filter(person => person.name !== personToRemove.name);
 
           setPersons(personsWithoutPersonRemoved);
+
+          setNotification({
+            message: `${personToRemove.name} removed successfully!`,
+            type: 'success',
+            show: true
+          });
+
+          setTimeout(() => {
+            setNotification({
+              show: false,
+            });
+          }, 3000);
+        })
+        .catch(error => {
+          setNotification({
+            message: `Information of ${personToRemove.name} has already been removed from server`,
+            type: 'error',
+            show: true
+          });
+
+          setTimeout(() => {
+            setNotification({
+              show: false,
+            });
+          }, 3000);
         });
     };
   };
@@ -67,6 +121,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification {...notification} />
       <Filter
         persons={persons}
         handlePersonsFiltered={handlePersonsFiltered}
