@@ -10,7 +10,7 @@
       "id": 2,
       "content": "Browser can execute only Javascript",
       "date": "2019-05-30T18:39:34.091Z",
-      "important": false
+      "important": true
     },
     {
       "id": 3,
@@ -33,7 +33,7 @@
     {
       "content": "Lalalal",
       "date": "2020-05-05T12:41:20.200Z",
-      "important": true,
+      "important": false,
       "id": 6
     }
   ]
