@@ -2,17 +2,17 @@
   "persons": [
     {
       "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": 2
+      "id": 2,
+      "phone": "123"
     },
     {
       "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": 3
+      "id": 3,
+      "phone": "123123"
     },
     {
       "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
+      "phone": "39-23-6423122",
       "id": 4
     },
     {
@@ -21,14 +21,14 @@
       "id": 6
     },
     {
-      "name": "123123",
-      "phone": "12313",
-      "id": 7
-    },
-    {
       "name": "Teste123",
       "phone": "123123",
       "id": 9
+    },
+    {
+      "name": "Test",
+      "phone": "123",
+      "id": 10
     }
   ]
 }

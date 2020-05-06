@@ -43,9 +43,25 @@ const App = () => {
         .then(() => {
           const personsWithoutPersonRemoved =
             persons.filter(person => person.name !== personToRemove.name);
-          setPersons(personsWithoutPersonRemoved)
+
+          setPersons(personsWithoutPersonRemoved);
         });
-    }
+    };
+  };
+
+  const handleUpdatePerson = (personToUpdate) => {
+    thePhonebookServices
+      .update(personToUpdate.id, personToUpdate)
+      .then(personUpdated => {
+        const personUpdatedIndex = persons.findIndex(person => person.id === personToUpdate.id);
+        const newPersons = [...persons];
+
+        newPersons[personUpdatedIndex] = {
+          ...personUpdated
+        };
+
+        setPersons(newPersons);
+      })
   }
 
   return (
@@ -59,6 +75,7 @@ const App = () => {
       <PersonForm
         currentPersons={persons}
         handleNewPerson={handleNewPerson}
+        handleUpdatePerson={handleUpdatePerson}
       />
       <h2>Numbers</h2>
       <Persons
