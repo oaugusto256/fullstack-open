@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Persons = ({ personsFiltered, persons }) => {
+const Persons = ({ personsFiltered, persons, handleRemovePerson }) => {
   return (
     <ul>
       {personsFiltered.length > 0 ? (
@@ -14,8 +14,9 @@ const Persons = ({ personsFiltered, persons }) => {
           <>
             {persons.map(person => (
               <li key={person.name}>
-                {person.name} {person.phone}
-              </li>))}
+                {person.name} {person.phone} <button onClick={() => handleRemovePerson(person)}>delete</button>
+              </li>
+            ))}
           </>
         )}
     </ul>

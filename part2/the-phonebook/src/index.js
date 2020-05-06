@@ -36,6 +36,18 @@ const App = () => {
     setPersonsFiltered(persons);
   }
 
+  const handleRemovePerson = (personToRemove) => {
+    if (window.confirm(`Do you really want to remove ${personToRemove.name}?`)) {
+      thePhonebookServices
+        .remove(personToRemove.id)
+        .then(() => {
+          const personsWithoutPersonRemoved =
+            persons.filter(person => person.name !== personToRemove.name);
+          setPersons(personsWithoutPersonRemoved)
+        });
+    }
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -52,6 +64,7 @@ const App = () => {
       <Persons
         persons={persons}
         personsFiltered={personsFiltered}
+        handleRemovePerson={handleRemovePerson}
       />
     </div >
   )
