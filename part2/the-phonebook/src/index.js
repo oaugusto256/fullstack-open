@@ -22,10 +22,14 @@ const App = () => {
   }, []);
 
   const handleNewPerson = (newPerson) => {
-    setPersons([
-      ...persons,
-      newPerson
-    ]);
+    axios
+      .post('http://localhost:3001/persons', newPerson)
+      .then(response => {
+        setPersons([
+          ...persons,
+          newPerson
+        ]);
+      });
   }
 
   const handlePersonsFiltered = (persons) => {
