@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import axios from "axios";
+import thePhonebookServices from "./services/thePhonebook";
 
 import './index.css';
 
@@ -14,20 +14,20 @@ const App = () => {
   const [persons, setPersons] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        setPersons(response.data);
+    thePhonebookServices
+      .getAll()
+      .then(initialPersons => {
+        setPersons(initialPersons);
       });
   }, []);
 
   const handleNewPerson = (newPerson) => {
-    axios
-      .post('http://localhost:3001/persons', newPerson)
-      .then(response => {
+    thePhonebookServices
+      .create(newPerson)
+      .then(personCreated => {
         setPersons([
           ...persons,
-          newPerson
+          personCreated
         ]);
       });
   }
