@@ -21,6 +21,14 @@ let persons = [
   }
 ];
 
+const generateId = () => {
+  const maxId = persons.length > 0
+    ? Math.max(...persons.map(n => n.id))
+    : 0;
+
+  return maxId + 1;
+};
+
 app.get('/api/persons', (req, res) => {
   res.json(persons);
 });
@@ -49,6 +57,27 @@ app.get('/info', (req, res) => {
     <p>${Date(Date.now())}</p >
   `);
 });
+
+
+app.post('/api/persons', (req, res) => {
+  const body = req.body;
+
+  if (!body.name || !body.phone) {
+    return res.status(400).json({
+      error: 'name and phone missing'
+    });
+  };
+
+  const person = {
+    name: body.name,
+    phone: body.phone,
+    id: generateId(),
+  }
+
+  persons = persons.concat(person);
+
+  res.json(person);
+})
 
 const PORT = 3001;
 
