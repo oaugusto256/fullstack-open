@@ -3,6 +3,12 @@ const app = express();
 
 app.use(express.json());
 
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' });
+};
+
+app.use(unknownEndpoint);
+
 let persons = [
   {
     name: "Ada Lovelace",
