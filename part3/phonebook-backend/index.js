@@ -1,13 +1,16 @@
 const express = require('express');
+const morgan = require('morgan');
+
 const app = express();
 
+app.use(morgan('combined'));
 app.use(express.json());
 
-const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint' });
-};
+// app.use(unknownEndpoint);
 
-app.use(unknownEndpoint);
+// const unknownEndpoint = (request, response) => {
+//   response.status(404).send({ error: 'unknown endpoint' });
+// };
 
 let persons = [
   {
