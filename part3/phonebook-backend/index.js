@@ -1,7 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
+const morganBody = require('morgan-body');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.json());
+
+morganBody(app);
 
 app.use(morgan('combined'));
 app.use(express.json());
