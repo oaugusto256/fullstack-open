@@ -2,7 +2,10 @@ const express = require('express');
 const morgan = require('morgan');
 const morganBody = require('morgan-body');
 const bodyParser = require('body-parser');
+const ENV = require('dotenv').config();
 const cors = require('cors');
+
+const Person = require('./models/person');
 
 const app = express();
 
@@ -22,24 +25,6 @@ app.use(express.static('build'));
 //   response.status(404).send({ error: 'unknown endpoint' });
 // };
 
-let persons = [
-  {
-    name: "Ada Lovelace",
-    id: 2,
-    phone: "123"
-  },
-  {
-    name: "Dan Abramov",
-    id: 3,
-    phone: "123123"
-  },
-  {
-    name: "Mary Poppendieck",
-    phone: "39-23-6423122",
-    id: 4
-  }
-];
-
 const generateId = () => {
   const maxId = persons.length > 0
     ? Math.max(...persons.map(n => n.id))
@@ -49,7 +34,9 @@ const generateId = () => {
 };
 
 app.get('/api/persons', (req, res) => {
-  res.json(persons);
+  Person.find({}).then(persons => {
+    res.json(persons.map(person => person.toJSON()));
+  });
 });
 
 app.get('/api/persons/:id', (req, res) => {

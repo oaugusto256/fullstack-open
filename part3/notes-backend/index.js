@@ -10,7 +10,6 @@ app.use(express.static('build'));
 
 const Note = require('./models/note');
 
-
 app.get('/', (req, res) => {
   res.send('<h1>Notes API</h1>')
 })
