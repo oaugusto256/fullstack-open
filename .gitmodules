@@ -1,6 +1,0 @@
-[submodule "part3/notes-backend"]
-	path = part3/notes-backend
-	url = git@github.com:oaugusto256/fullstack-open.git
-[submodule "part3/the-phonebook-backend"]
-	path = part3/the-phonebook-backend
-	url = git@github.com:oaugusto256/fullstack-open.git
