@@ -25,14 +25,6 @@ app.use(express.static('build'));
 //   response.status(404).send({ error: 'unknown endpoint' });
 // };
 
-const generateId = () => {
-  const maxId = persons.length > 0
-    ? Math.max(...persons.map(n => n.id))
-    : 0;
-
-  return maxId + 1;
-};
-
 app.get('/api/persons', (req, res) => {
   Person.find({}).then(persons => {
     res.json(persons.map(person => person.toJSON()));
@@ -50,6 +42,23 @@ app.get('/api/persons/:id', (req, res) => {
   }
 });
 
+app.post('/api/persons', (req, res) => {
+  const body = req.body;
+
+  if (!body.name || !body.phone) {
+    return res.status(400).json({ error: 'name and phone missing' });
+  };
+
+  const person = new Person({
+    name: body.name,
+    phone: body.phone
+  });
+
+  person.save().then(savedPerson => {
+    res.json(savedPerson.toJSON());
+  });
+});
+
 app.delete('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id);
   persons = persons.filter(person => person.id !== id)
@@ -63,33 +72,6 @@ app.get('/info', (req, res) => {
     <p>${Date(Date.now())}</p >
   `);
 });
-
-
-app.post('/api/persons', (req, res) => {
-  const body = req.body;
-
-  if (!body.name || !body.phone) {
-    return res.status(400).json({
-      error: 'name and phone missing'
-    });
-  };
-
-  if (persons.some(person => person.name === body.name)) {
-    return res.status(400).json({
-      error: 'name must be unique'
-    });
-  }
-
-  const person = {
-    name: body.name,
-    phone: body.phone,
-    id: generateId(),
-  }
-
-  persons = persons.concat(person);
-
-  res.json(person);
-})
 
 const PORT = process.env.PORT || 3001;
 
