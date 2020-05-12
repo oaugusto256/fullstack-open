@@ -1,8 +1,8 @@
 # fullstack-open
 
-Codebase to hold all exercises from fullstack open course.
+Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/en/) course.
 
-# Course content
+## Course content
 
 ### part0 - Fundamentals of Web apps :white_check_mark:	
   1. General info
@@ -65,3 +65,7 @@ Codebase to hold all exercises from fullstack open course.
  2. First steps with Typescript
  3. Typing the express app
  4. React with types
+ 
+ ## License
+
+WTFPL
