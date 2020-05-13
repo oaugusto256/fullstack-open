@@ -19,20 +19,6 @@ app.use(express.json());
 
 app.use(express.static('build'));
 
-const errorHandler = (error, request, response, next) => {
-  console.error(error.message);
-
-  if (error.name === 'CastError') {
-    return response.status(400).send({ error: 'malformatted id' });
-  } else if (error.name === 'ValidationError') {
-    return response.status(400).json({ error: error.message });
-  }
-
-  next(error);
-};
-
-app.use(errorHandler);
-
 app.get('/api/persons', (req, res) => {
   Person.find({}).then(persons => {
     res.json(persons.map(person => person.toJSON()));
@@ -97,6 +83,20 @@ app.get('/info', (req, res) => {
     `);
   });
 });
+
+const errorHandler = (error, request, response, next) => {
+  console.log(error);
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' });
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message });
+  }
+
+  next(error);
+};
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 

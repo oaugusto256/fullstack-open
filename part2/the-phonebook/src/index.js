@@ -45,10 +45,8 @@ const App = () => {
         }, 3000);
       })
       .catch(error => {
-        console.log(error);
-
         setNotification({
-          message: 'An error has happened!',
+          message: error.response.data.error,
           type: 'error',
           show: true
         });
