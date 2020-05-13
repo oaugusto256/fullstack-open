@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const url = process.env.MONGODB_URI;
 
+mongoose.set('useFindAndModify', false);
+
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const personSchema = new mongoose.Schema({
