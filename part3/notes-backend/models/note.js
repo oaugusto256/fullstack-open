@@ -2,19 +2,15 @@ const mongoose = require('mongoose');
 
 mongoose.set('useFindAndModify', false);
 
-const url = process.env.MONGODB_URI;
-
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
 const noteSchema = new mongoose.Schema({
   content: {
     type: String,
-    minlength: 5,
-    required: true
+    required: true,
+    minlength: 5
   },
   date: {
     type: Date,
-    required: true
+    required: true,
   },
   important: Boolean,
 });
