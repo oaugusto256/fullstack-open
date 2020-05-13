@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const ENV = require('dotenv').config();
+require('dotenv').config();
 
 const app = express();
 
@@ -11,8 +11,8 @@ app.use(express.static('build'));
 const Note = require('./models/note');
 
 app.get('/', (req, res) => {
-  res.send('<h1>Notes API</h1>')
-})
+  res.send('<h1>Notes API</h1>');
+});
 
 app.get('/api/notes', (req, res) => {
   Note.find({}).then(notes => {
@@ -34,7 +34,7 @@ app.post('/api/notes', (req, res, next) => {
       res.json(savedNote.toJSON());
     })
     .catch(error => next(error));
-})
+});
 
 app.get('/api/notes/:id', (req, res, next) => {
   Note.findById(req.params.id)
@@ -43,26 +43,26 @@ app.get('/api/notes/:id', (req, res, next) => {
         res.json(note.toJSON());
       } else {
         res.status(404).end();
-      };
+      }
     })
     .catch(error => next(error));
 });
 
 app.delete('/api/notes/:id', (request, response, next) => {
   Note.findByIdAndRemove(request.params.id)
-    .then(result => {
+    .then(() => {
       response.status(204).end();
     })
     .catch(error => next(error));
 });
 
 app.put('/api/notes/:id', (request, response, next) => {
-  const body = request.body
+  const body = request.body;
 
   const note = {
     content: body.content,
     important: body.important,
-  }
+  };
 
   Note.findByIdAndUpdate(request.params.id, note, { new: true })
     .then(updatedNote => {
@@ -86,8 +86,8 @@ const errorHandler = (error, request, response, next) => {
 app.use(errorHandler);
 
 const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint' })
-}
+  response.status(404).send({ error: 'unknown endpoint' });
+};
 
 app.use(unknownEndpoint);
 
