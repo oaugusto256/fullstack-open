@@ -4,16 +4,16 @@ Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/e
 
 ## Course content
 
-### part0 - Fundamentals of Web apps :white_check_mark:	
+### part0 - Fundamentals of Web apps :white_check_mark:
   1. General info
   2. Fundamentals of Web apps
-  
-### part1 - Introduction to React :white_check_mark:	
+
+### part1 - Introduction to React :white_check_mark:
   1. Introduction to React
   2. JavaScript
   3. Component state, event handlers
   4. A more complex state, debugging React apps
-  
+
 ### part2 - Communicating with server :white_check_mark:
   1. Rendering a collection, modules
   2. Forms
@@ -21,12 +21,12 @@ Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/e
   4. Altering data in server
   5. Adding styles to React app
 
-### part3 - Programming a server with NodeJS and Express :black_square_button:
+### part3 - Programming a server with NodeJS and Express :white_check_mark:
   1. NodeJS and Express
   2. Deploying app to internet
   3. Saving data to MongoDB
   4. Validation and ESlint
-  
+
 ### part4 - Testing Express servers, user administration :black_square_button:
  1. Structure of backend application, introduction to testing
  2. Testing the backend
@@ -44,7 +44,7 @@ Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/e
  2. Many reducers
  3. Communicating with server in redux application
  4. connect `react-redux`
- 
+
 ### part7 - React router, custom hooks, styling app with CSS and webpack :black_square_button:
  1. `react-router`
  2. Custom hooks
@@ -65,7 +65,7 @@ Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/e
  2. First steps with Typescript
  3. Typing the express app
  4. React with types
- 
+
  ## License
 
 WTFPL
