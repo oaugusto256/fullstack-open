@@ -57,9 +57,45 @@ const mostBlogs = (blogs) => {
   return getAuthorWithMostBlogs(authorsWithBlogCount);
 };
 
+const mostLikes = (blogs) => {
+  const createUniqueAuthorListWithLikesCount = (acc, curr) => {
+    if (curr.author in acc) {
+      acc[curr.author] = {
+        likes: acc[curr.author].likes + curr.likes
+      };
+      return acc;
+    }
+
+    acc[curr.author] = { likes: curr.likes };
+    return acc;
+  };
+
+  const getAuthorWithMostLikes = (authorLikesCountObject) => {
+    let authorAuxObject = {
+      author: '',
+      likes: 0,
+    };
+
+    for (const [key, value] of Object.entries(authorLikesCountObject)) {
+      if (value.likes >= authorAuxObject.likes) {
+        authorAuxObject = {
+          author: key,
+          likes: value.likes
+        };
+      }
+    }
+
+    return authorAuxObject;
+  };
+
+  const authorLikesCount = blogs.reduce(createUniqueAuthorListWithLikesCount, {});
+  return getAuthorWithMostLikes(authorLikesCount);
+};
+
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
-  mostBlogs
+  mostBlogs,
+  mostLikes
 };
