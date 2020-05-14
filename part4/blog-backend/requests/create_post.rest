@@ -2,8 +2,8 @@ post http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-  "title": "Test test",
-  "author": "Otavio Augusto",
+  "title": "Lalala Kamehameha",
+  "author": "Augusto Alves",
   "url": "http://google.com/wtf",
   "likes": 0
 }
