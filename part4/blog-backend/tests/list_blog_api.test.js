@@ -8,12 +8,13 @@ const Blog = require('../models/blogs');
 
 beforeEach(async () => {
   await Blog.deleteMany({});
+  console.log('cleared');
 
-  let blogObject = new Blog(helper.initialPosts[0]);
-  await blogObject.save();
+  const postObjects = helper.initialPosts.map(post => new Blog(post));
+  const promiseArray = postObjects.map(post => post.save());
+  await Promise.all(promiseArray);
 
-  blogObject = new Blog(helper.initialPosts[1]);
-  await blogObject.save();
+  console.log('done');
 });
 
 describe('supertest blogs api', () => {
