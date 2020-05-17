@@ -1,31 +1,18 @@
 const mongoose = require('mongoose');
 const supertest = require('supertest');
+const helper = require('./test_helper');
 const app = require('../app');
 const api = supertest(app);
-const Blog = require('../models/blogs');
 
-const initialBlogs = [
-  {
-    'title': 'Lalala Kamehameha',
-    'author': 'Augusto Alves',
-    'url': 'http://google.com/wtf',
-    'likes': 0
-  },
-  {
-    'title': 'Lalala Kamehameha',
-    'author': 'Augusto Alves',
-    'url': 'http://google.com/wtf',
-    'likes': 13
-  },
-];
+const Blog = require('../models/blogs');
 
 beforeEach(async () => {
   await Blog.deleteMany({});
 
-  let blogObject = new Blog(initialBlogs[0]);
+  let blogObject = new Blog(helper.initialPosts[0]);
   await blogObject.save();
 
-  blogObject = new Blog(initialBlogs[1]);
+  blogObject = new Blog(helper.initialPosts[1]);
   await blogObject.save();
 });
 
@@ -39,7 +26,7 @@ describe('supertest blogs api', () => {
 
   test('there are two blog post', async () => {
     const response = await api.get('/api/blogs');
-    expect(response.body).toHaveLength(2);
+    expect(response.body).toHaveLength(helper.initialPosts.length);
   });
 
   test('a valid blog post should be added', async () => {
@@ -60,7 +47,7 @@ describe('supertest blogs api', () => {
 
     const title = response.body.map(r => r.title);
 
-    expect(response.body).toHaveLength(initialBlogs.length + 1);
+    expect(response.body).toHaveLength(helper.initialPosts.length + 1);
     expect(title).toContain('Lalala Kamehameha');
   });
 
@@ -75,7 +62,7 @@ describe('supertest blogs api', () => {
       .expect(400);
 
     const response = await api.get('/api/blogs');
-    expect(response.body).toHaveLength(initialBlogs.length);
+    expect(response.body).toHaveLength(helper.initialPosts.length);
   });
 });
 
