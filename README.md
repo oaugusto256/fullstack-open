@@ -4,14 +4,14 @@ Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/e
 
 ## Course content
 
-##### part0 - Fundamentals of Web apps :white_check_mark:
+#### part0 - Fundamentals of Web apps :white_check_mark:
 
 In this part, we will familiarize ourselves with the practicalities of taking the course. After that we will have an overview of the basics of web development, and also talk about the advances in web application development during the last few decades.
 
   1. General info
   2. Fundamentals of Web apps
 
-##### part1 - Introduction to React :white_check_mark:
+#### part1 - Introduction to React :white_check_mark:
 
 In this part, we will familiarize ourselves with the React-library, which we will be using to write the code that runs in the browser. We will also look at some features of JavaScript that are important for understanding React.
 
@@ -20,7 +20,7 @@ In this part, we will familiarize ourselves with the React-library, which we wil
   3. Component state, event handlers
   4. A more complex state, debugging React apps
 
-##### part2 - Communicating with server :white_check_mark:
+#### part2 - Communicating with server :white_check_mark:
 
 Let's continue our introduction to React. First, we will take a look at how to render a data collection, like a list of names, to the screen. After this, we will inspect how a user can submit data to a React application using HTML forms. Next, our focus shifts towards looking at how JavaScript code in the browser can fetch and handle data stored in a remote backend server. Lastly, we will take a quick look at a few simple ways of adding CSS styles to our React application
 
@@ -30,7 +30,7 @@ Let's continue our introduction to React. First, we will take a look at how to r
   4. Altering data in server
   5. Adding styles to React app
 
-##### part3 - Programming a server with NodeJS and Express :white_check_mark:
+#### part3 - Programming a server with NodeJS and Express :white_check_mark:
 
 In this part our focus shifts towards the backend, that is, towards implementing functionality on the server side of the stack. We will implement a simple REST API in Node.js by using the Express library, and the application's data will be stored in a MongoDB database. At the end of this part, we will deploy our application to the internet.
 
@@ -39,7 +39,7 @@ In this part our focus shifts towards the backend, that is, towards implementing
   3. Saving data to MongoDB
   4. Validation and ESlint
 
-##### part4 - Testing Express servers, user administration :white_check_mark:
+#### part4 - Testing Express servers, user administration :white_check_mark:
 
 In this part, we will continue our work on the backend. Our first major theme will be writing unit and integration tests for the backend. After we have covered testing, we will take a look at implementing user authentication and authorization.
 
@@ -48,7 +48,7 @@ In this part, we will continue our work on the backend. Our first major theme wi
  3. User administration
  4. Token authentication
 
-##### part5 - Testing React apps :black_square_button:
+#### part5 - Testing React apps :black_square_button:
 
 In this part we return to the frontend, first looking at different possibilities for testing the React code. We will also implement token based authentication which will enable users to log in to our application.
 
@@ -57,7 +57,7 @@ In this part we return to the frontend, first looking at different possibilities
  3. Testing React apps
  4. End to end testing
 
-##### part6 - State management with Redux :black_square_button:
+#### part6 - State management with Redux :black_square_button:
 
 So far, we have placed the application's state and state logic directly inside React-components. When applications grow larger, state management should be moved outside React-components. In this part, we will introduce the Redux-library, which is currently the most popular solution for managing the state of React-applications.
 
@@ -66,7 +66,7 @@ So far, we have placed the application's state and state logic directly inside R
  3. Communicating with server in redux application
  4. connect `react-redux`
 
-##### part7 - React router, custom hooks, styling app with CSS and webpack :black_square_button:
+#### part7 - React router, custom hooks, styling app with CSS and webpack :black_square_button:
 
 The seventh part of the course touches on several different themes. First, we'll get familiar with React router. React router helps us divide the application into different views that are shown based on the URL in the browser's address bar. After this, we'll look at a few more ways to add CSS-styles to React applications. During the entire course we've used create-react-app to generate the body of our applications. This time we'll take a look under the hood: we'll learn how Webpack works and how we can use it to configure the application ourselves. We shall also have a look on hook-functions and how to define a custom hook.
 
@@ -77,7 +77,7 @@ The seventh part of the course touches on several different themes. First, we'll
  5. Class components, miscellaneous
  6. Exercises: extending the bloglit
 
-##### part8 - GraphQL :black_square_button:
+#### part8 - GraphQL :black_square_button:
 
 This part of the course is about GraphQL, Facebook's alternative to REST for communication between browser and a server.
 
@@ -87,7 +87,7 @@ This part of the course is about GraphQL, Facebook's alternative to REST for com
  4. Login and updating the cache
  5. Fragments and subscriptions
 
-##### part9 - Typescript :black_square_button:
+#### part9 - Typescript :black_square_button:
 
 This part is all about TypeScript: and open-source typed superset of JavaScript developed by Microsoft that compiles to plain JavaScript.
 
