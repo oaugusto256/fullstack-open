@@ -27,7 +27,7 @@ Codebase to hold all exercises from [fullstack open](https://fullstackopen.com/e
   3. Saving data to MongoDB
   4. Validation and ESlint
 
-##### part4 - Testing Express servers, user administration :black_square_button:
+##### part4 - Testing Express servers, user administration :white_check_mark:
  1. Structure of backend application, introduction to testing
  2. Testing the backend
  3. User administration
