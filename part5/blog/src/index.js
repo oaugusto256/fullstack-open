@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import LoginForm from "./components/loginForm";
@@ -16,6 +16,16 @@ const App = () => {
   const [newPostUrl, setNewPostUrl] = useState("");
   const [newPostLikes, setNewPostLikes] = useState("");
 
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem("loggedBlogUser");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      setUser(user);
+      blogsService.setToken(user.token);
+    }
+  }, []);
+
+
   const handleLogin = async ({ username, password }) => {
     try {
       const user = await loginService.login({
@@ -23,6 +33,7 @@ const App = () => {
       });
 
       blogsService.setToken(user.token);
+      window.localStorage.setItem("loggedBlogUser", JSON.stringify(user));
 
       console.log("Login was made successfully!");
 
