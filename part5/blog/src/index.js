@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import LoginForm from "./components/loginForm";
 
+import blogsService from "./services/blogs";
 import loginService from "./services/login";
 
 import "./index.css";
@@ -16,6 +17,8 @@ const App = () => {
         username, password,
       });
 
+      blogsService.setToken(user.token);
+
       console.log("Login was made successfully!");
 
       setUser(user);
@@ -27,7 +30,8 @@ const App = () => {
   return (
     <>
       <h1>Blog</h1>
-      <LoginForm handleLogin={handleLogin} />
+      {user === null && <LoginForm handleLogin={handleLogin} />}
+      {user && <p>{`User: ${user.name} is logged.`}</p>}
     </>
   );
 };
