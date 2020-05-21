@@ -72,7 +72,7 @@ const App = () => {
           <div>
             author
             <input
-              value={newPostTitle}
+              value={newPostAuthor}
               placeholder="Author"
               onChange={(event) => setNewPostAuthor(event.target.value)}
             />
@@ -80,7 +80,7 @@ const App = () => {
           <div>
             title
             <input
-              value={newPostTitle}
+              value={newPostUrl}
               placeholder="Url"
               onChange={(event) => setNewPostUrl(event.target.value)}
             />
@@ -88,7 +88,7 @@ const App = () => {
           <div>
             likes
             <input
-              value={newPostTitle}
+              value={newPostLikes}
               placeholder="Likes"
               onChange={(event) => setNewPostLikes(event.target.value)}
             />
