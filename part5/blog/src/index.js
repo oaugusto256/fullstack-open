@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
+import LoginForm from "./components/loginForm";
+
 import loginService from "./services/login";
 
 import "./index.css";
 
 const App = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  const handleLogin = async ({ username, password }) => {
     try {
       const user = await loginService.login({
         username, password,
@@ -20,8 +19,6 @@ const App = () => {
       console.log("Login was made successfully!");
 
       setUser(user);
-      setUsername("");
-      setPassword("");
     } catch (exception) {
       console.log("Wrong credentials");
     }
@@ -30,27 +27,7 @@ const App = () => {
   return (
     <>
       <h1>Blog</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          username
-          <input
-            type="text"
-            name="Username"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-          />
-        </div>
-        <div>
-          password
-          <input
-            type="password"
-            name="Password"
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button type="submit">login</button>
-      </form>
+      <LoginForm handleLogin={handleLogin} />
     </>
   );
 };
