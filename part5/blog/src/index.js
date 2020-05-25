@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import LoginForm from "./components/loginForm";
+import Togglable from "./components/togglable";
 
 import blogsService from "./services/blogs";
 import loginService from "./services/login";
@@ -80,46 +81,48 @@ const App = () => {
           <button onClick={handleLogout}>Logout</button>
         </>
       )}
-      {user && (
-        <>
-          <h2>New blog post</h2>
-          <form onSubmit={addBlogPost}>
-            <div>
-              title
-              <input
-                value={newPostTitle}
-                placeholder="Title"
-                onChange={(event) => setNewPostTitle(event.target.value)}
-              />
-            </div>
-            <div>
-              author
-              <input
-                value={newPostAuthor}
-                placeholder="Author"
-                onChange={(event) => setNewPostAuthor(event.target.value)}
-              />
-            </div>
-            <div>
-              title
-              <input
-                value={newPostUrl}
-                placeholder="Url"
-                onChange={(event) => setNewPostUrl(event.target.value)}
-              />
-            </div>
-            <div>
-              likes
-              <input
-                value={newPostLikes}
-                placeholder="Likes"
-                onChange={(event) => setNewPostLikes(event.target.value)}
-              />
-            </div>
-            <button type="submit">save</button>
-          </form>
-        </>
-      )}
+      <Togglable buttonLabel="new post">
+        {user && (
+          <>
+            <h2>New blog post</h2>
+            <form onSubmit={addBlogPost}>
+              <div>
+                title
+                <input
+                  value={newPostTitle}
+                  placeholder="Title"
+                  onChange={(event) => setNewPostTitle(event.target.value)}
+                />
+              </div>
+              <div>
+                author
+                <input
+                  value={newPostAuthor}
+                  placeholder="Author"
+                  onChange={(event) => setNewPostAuthor(event.target.value)}
+                />
+              </div>
+              <div>
+                title
+                <input
+                  value={newPostUrl}
+                  placeholder="Url"
+                  onChange={(event) => setNewPostUrl(event.target.value)}
+                />
+              </div>
+              <div>
+                likes
+                <input
+                  value={newPostLikes}
+                  placeholder="Likes"
+                  onChange={(event) => setNewPostLikes(event.target.value)}
+                />
+              </div>
+              <button type="submit">save</button>
+            </form>
+          </>
+        )}
+      </Togglable>
     </>
   );
 };
