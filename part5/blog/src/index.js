@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import LoginForm from "./components/loginForm";
 import Togglable from "./components/togglable";
 import NewPostForm from "./components/newPostForm";
+import PostList from "./components/postList";
 
 import blogsService from "./services/blogs";
 import loginService from "./services/login";
@@ -79,15 +80,7 @@ const App = () => {
           <NewPostForm addBlogPost={addBlogPost} />
         )}
       </Togglable>
-      {posts && posts.map(post => {
-        return (
-          <div className="post">
-            <h2>{post.title}</h2>
-            <p>{post.author}</p>
-            <p>{post.likes}</p>
-          </div>
-        );
-      })}
+      <PostList posts={posts} />
     </>
   );
 };
