@@ -19,3 +19,7 @@ input {
 form {
   margin: 16px 0;
 }
+
+.post {
+  border-bottom: 1px solid #777;
+}
