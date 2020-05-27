@@ -2,7 +2,7 @@ import React from "react";
 
 import PostDetail from "./postDetail";
 
-const PostList = ({ posts, updateBlogPost }) => {
+const PostList = ({ posts, updateBlogPost, deleteBlogPost }) => {
   if (!posts) {
     return null;
   }
@@ -11,7 +11,14 @@ const PostList = ({ posts, updateBlogPost }) => {
 
   return (
     <>
-      {postsSortByLikes.map(post => <PostDetail post={post} key={post.id} updateBlogPost={updateBlogPost} />)}
+      {postsSortByLikes.map(post =>
+        <PostDetail
+          post={post}
+          key={post.id}
+          updateBlogPost={updateBlogPost}
+          deleteBlogPost={deleteBlogPost}
+        />
+      )}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PostDetail = ({ post, updateBlogPost }) => {
+const PostDetail = ({ post, updateBlogPost, deleteBlogPost }) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleLike = () => {
@@ -12,11 +12,18 @@ const PostDetail = ({ post, updateBlogPost }) => {
     });
   };
 
+  const handleDelete = () => {
+    deleteBlogPost({ postObject: post });
+  };
+
   return (
     <div className="post">
       <div className="post-row">
         <h2>{post.title}</h2>
-        <button onClick={() => setShowDetails(!showDetails)}>{`${!showDetails ? "Show details" : "Close details"}`}</button>
+        <div className="buttons-row">
+          <button onClick={handleDelete}>Delete</button>
+          <button onClick={() => setShowDetails(!showDetails)}>{`${!showDetails ? "Show details" : "Close details"}`}</button>
+        </div>
       </div>
       {showDetails && (
         <>
@@ -25,6 +32,7 @@ const PostDetail = ({ post, updateBlogPost }) => {
             <p>{`Likes: ${post.likes}`}</p>
             <button onClick={handleLike}>Like</button>
           </div>
+
         </>
       )}
     </div>

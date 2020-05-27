@@ -80,6 +80,18 @@ const App = () => {
       });
   };
 
+  const deleteBlogPost = ({ postObject }) => {
+    if (window.confirm(`Do you really want to remove ${postObject.title}?`)) {
+      blogsService
+        .remove(postObject.id)
+        .then(() => {
+          const postsWithoutPostRemoved = posts.filter(post => post.id !== postObject.id);
+
+          setPosts(postsWithoutPostRemoved);
+        });
+    }
+  };
+
   return (
     <>
       <h1>Blog</h1>
@@ -95,7 +107,11 @@ const App = () => {
           <NewPostForm addBlogPost={addBlogPost} />
         )}
       </Togglable>
-      <PostList updateBlogPost={updateBlogPost} posts={posts} />
+      <PostList
+        posts={posts}
+        deleteBlogPost={deleteBlogPost}
+        updateBlogPost={updateBlogPost}
+      />
     </>
   );
 };

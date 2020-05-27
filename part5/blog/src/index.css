@@ -29,3 +29,7 @@ form {
   display: flex;
   justify-content: space-between;
 }
+
+.buttons-row {
+  display: flex;
+}
