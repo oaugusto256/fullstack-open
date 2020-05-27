@@ -7,9 +7,11 @@ const PostList = ({ posts, updateBlogPost }) => {
     return null;
   }
 
+  const postsSortByLikes = posts.sort((a, b) => b.likes - a.likes);
+
   return (
     <>
-      {posts.map(post => <PostDetail post={post} key={post.id} updateBlogPost={updateBlogPost} />)}
+      {postsSortByLikes.map(post => <PostDetail post={post} key={post.id} updateBlogPost={updateBlogPost} />)}
     </>
   );
 };
