@@ -2,15 +2,15 @@ import React from "react";
 
 import PostDetail from "./postDetail";
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, updateBlogPost }) => {
   if (!posts) {
     return null;
   }
 
   return (
-    <div>
-      {posts.map(post => <PostDetail key={post.id} post={post} />)}
-    </div>
+    <>
+      {posts.map(post => <PostDetail post={post} key={post.id} updateBlogPost={updateBlogPost} />)}
+    </>
   );
 };
 
