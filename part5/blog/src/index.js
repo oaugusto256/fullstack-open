@@ -65,6 +65,21 @@ const App = () => {
       });
   };
 
+  const updateBlogPost = ({ postObject }) => {
+    blogsService
+      .update(postObject.id, postObject)
+      .then(returnedPost => {
+        const postUpdatedIndex = posts.findIndex(postToFind => postToFind.id === returnedPost.id);
+        const newPosts = [...posts];
+
+        newPosts[postUpdatedIndex] = {
+          ...returnedPost
+        };
+
+        setPosts(newPosts);
+      });
+  };
+
   return (
     <>
       <h1>Blog</h1>
@@ -80,7 +95,7 @@ const App = () => {
           <NewPostForm addBlogPost={addBlogPost} />
         )}
       </Togglable>
-      <PostList posts={posts} />
+      <PostList updateBlogPost={updateBlogPost} posts={posts} />
     </>
   );
 };
