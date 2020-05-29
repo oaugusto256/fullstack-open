@@ -27,13 +27,10 @@ const PostDetail = ({ post, updateBlogPost, deleteBlogPost }) => {
         </div>
       </div>
       {showDetails && (
-        <>
-          <div className="post-row">
-            <p>{`Likes: ${post.likes}`}</p>
-            <button onClick={handleLike}>Like</button>
-          </div>
-
-        </>
+        <div className="post-likes">
+          <p>{`Likes: ${post.likes}`}</p>
+          <button onClick={handleLike}>Like</button>
+        </div>
       )}
     </div>
   );

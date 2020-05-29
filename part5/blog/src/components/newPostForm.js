@@ -33,6 +33,7 @@ const NewPostForm = ({ addBlogPost }) => {
           <input
             value={newPostTitle}
             placeholder="Title"
+            className="post-title"
             onChange={(event) => setNewPostTitle(event.target.value)}
           />
         </div>
@@ -41,6 +42,7 @@ const NewPostForm = ({ addBlogPost }) => {
           <input
             value={newPostAuthor}
             placeholder="Author"
+            className="post-author"
             onChange={(event) => setNewPostAuthor(event.target.value)}
           />
         </div>
@@ -49,6 +51,7 @@ const NewPostForm = ({ addBlogPost }) => {
           <input
             value={newPostUrl}
             placeholder="Url"
+            className="post-url"
             onChange={(event) => setNewPostUrl(event.target.value)}
           />
         </div>
@@ -57,6 +60,7 @@ const NewPostForm = ({ addBlogPost }) => {
           <input
             value={newPostLikes}
             placeholder="Likes"
+            className="post-likes"
             onChange={(event) => setNewPostLikes(event.target.value)}
           />
         </div>

@@ -30,6 +30,11 @@ form {
   justify-content: space-between;
 }
 
+.post-likes {
+  display: flex;
+  justify-content: space-between;
+}
+
 .buttons-row {
   display: flex;
 }
