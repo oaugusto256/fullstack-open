@@ -49,7 +49,7 @@ const App = () => {
 
       setUser(user);
     } catch (exception) {
-      console.log("Wrong credentials");
+      setNotification("wrong credentials");
     }
   };
 

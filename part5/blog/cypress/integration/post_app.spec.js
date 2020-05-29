@@ -30,14 +30,18 @@ describe("Blog app", function () {
     cy.contains("User: Otavio Augusto is logged.");
   });
 
+  it("login fails with wrong password", function () {
+    cy.contains("login").click();
+    cy.get("#username").type("mluukkai");
+    cy.get("#password").type("wrong");
+    cy.get("#login-button").click();
+
+    cy.contains("wrong credentials");
+  });
+
   describe("when logged in", function () {
     beforeEach(function () {
-      cy.contains("login").click();
-
-      cy.get("#username").type("oaugusto");
-      cy.get("#password").type("otavio123");
-
-      cy.get("#login-button").click();
+      cy.login({ username: "oaugusto", password: "otavio123" });
 
       cy.contains("new post").click();
 
