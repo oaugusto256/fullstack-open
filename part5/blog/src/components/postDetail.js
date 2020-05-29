@@ -29,7 +29,7 @@ const PostDetail = ({ post, updateBlogPost, deleteBlogPost }) => {
       {showDetails && (
         <div className="post-likes">
           <p>{`Likes: ${post.likes}`}</p>
-          <button onClick={handleLike}>Like</button>
+          <button id="post-like-button" onClick={handleLike}>Like</button>
         </div>
       )}
     </div>

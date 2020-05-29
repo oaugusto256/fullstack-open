@@ -1,5 +1,13 @@
 describe("Blog app", function () {
   beforeEach(function () {
+    cy.request("POST", "http://localhost:3003/api/testing/reset");
+    const user = {
+      name: "Otavio Augusto",
+      username: "oaugusto",
+      password: "otavio123"
+    };
+    cy.request("POST", "http://localhost:3003/api/users/", user);
+
     cy.visit("http://localhost:3000");
   });
 
@@ -30,9 +38,7 @@ describe("Blog app", function () {
       cy.get("#password").type("otavio123");
 
       cy.get("#login-button").click();
-    });
 
-    it("a new note can be created", function () {
       cy.contains("new post").click();
 
       cy.get("#post-title").type("Test test");
@@ -41,7 +47,25 @@ describe("Blog app", function () {
       cy.get("#post-likes").type(10);
 
       cy.contains("save").click();
+    });
+
+    it("a new post can be created", function () {
       cy.contains("post successfully created");
+    });
+
+    it("a post can show details  ", () => {
+      cy.contains("Show details").click();
+
+      cy.contains("Likes: 10");
+      cy.contains("Like");
+    });
+
+    it("a post can be liked", () => {
+      cy.contains("Show details").click();
+
+      cy.get("#post-like-button").click();
+
+      cy.contains("Likes: 11");
     });
   });
 });
