@@ -19,7 +19,8 @@ const PostDetail = ({ post, updateBlogPost, deleteBlogPost }) => {
   return (
     <div className="post">
       <div className="post-row">
-        <h2>{post.title}</h2>
+        <h2 className="title">{post.title}</h2>
+        <p className="author" >{`Author: ${post.author}`}</p>
         <div className="buttons-row">
           <button onClick={handleDelete}>Delete</button>
           <button onClick={() => setShowDetails(!showDetails)}>{`${!showDetails ? "Show details" : "Close details"}`}</button>
@@ -27,7 +28,6 @@ const PostDetail = ({ post, updateBlogPost, deleteBlogPost }) => {
       </div>
       {showDetails && (
         <>
-          <p>{post.author}</p>
           <div className="post-row">
             <p>{`Likes: ${post.likes}`}</p>
             <button onClick={handleLike}>Like</button>
