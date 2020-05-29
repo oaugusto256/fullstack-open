@@ -16,6 +16,7 @@ const LOGGED_BLOG_USER_KEY = "loggedBlogUser";
 const App = () => {
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem(LOGGED_BLOG_USER_KEY);
@@ -61,7 +62,12 @@ const App = () => {
     blogsService
       .create(postObject)
       .then(returnedPost => {
-        console.log(returnedPost);
+        setNotification("post successfully created");
+        setPosts(posts.concat(returnedPost));
+
+        setTimeout(() => {
+          setNotification(null);
+        }, 2500);
       });
   };
 
@@ -101,6 +107,9 @@ const App = () => {
           <p>{`User: ${user.name} is logged.`}</p>
           <button onClick={handleLogout}>Logout</button>
         </>
+      )}
+      {notification && (
+        <p>{notification}</p>
       )}
       <Togglable buttonLabel="new post">
         {user && (

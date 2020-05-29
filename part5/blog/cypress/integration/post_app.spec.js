@@ -21,4 +21,27 @@ describe("Blog app", function () {
 
     cy.contains("User: Otavio Augusto is logged.");
   });
+
+  describe("when logged in", function () {
+    beforeEach(function () {
+      cy.contains("login").click();
+
+      cy.get("#username").type("oaugusto");
+      cy.get("#password").type("otavio123");
+
+      cy.get("#login-button").click();
+    });
+
+    it("a new note can be created", function () {
+      cy.contains("new post").click();
+
+      cy.get("#post-title").type("Test test");
+      cy.get("#post-author").type("Otavio Augusto");
+      cy.get("#post-url").type("http://wwww.google.com");
+      cy.get("#post-likes").type(10);
+
+      cy.contains("save").click();
+      cy.contains("post successfully created");
+    });
+  });
 });
