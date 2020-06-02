@@ -68,10 +68,21 @@ describe("Blog app", function () {
       cy.contains("Likes: 11");
     });
 
-    it.only("a post can be deleted", () => {
+    it("a post can be deleted", () => {
       cy.contains("Delete").click();
 
       cy.contains("post successfully deleted");
+    });
+
+    it.only("the posts should be ordered acoording likes", () => {
+      cy.get("#post-title").type("Test test");
+      cy.get("#post-author").type("Otavio Augusto");
+      cy.get("#post-url").type("http://wwww.google.com");
+      cy.get("#post-likes").type(15);
+
+      cy.contains("save").click().then(() => {
+        cy.get("#post-list");
+      });
     });
   });
 });
