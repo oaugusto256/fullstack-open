@@ -22,7 +22,7 @@ const PostDetail = ({ post, updateBlogPost, deleteBlogPost }) => {
         <h2 className="title">{post.title}</h2>
         <p className="author" >{`Author: ${post.author}`}</p>
         <div className="buttons-row">
-          <button onClick={handleDelete}>Delete</button>
+          <button id="post-delete-button" onClick={handleDelete}>Delete</button>
           <button onClick={() => setShowDetails(!showDetails)}>{`${!showDetails ? "Show details" : "Close details"}`}</button>
         </div>
       </div>

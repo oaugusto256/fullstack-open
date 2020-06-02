@@ -1,13 +1,7 @@
 describe("Blog app", function () {
   beforeEach(function () {
     cy.request("POST", "http://localhost:3003/api/testing/reset");
-    const user = {
-      name: "Otavio Augusto",
-      username: "oaugusto",
-      password: "otavio123"
-    };
-    cy.request("POST", "http://localhost:3003/api/users/", user);
-
+    cy.createUser();
     cy.visit("http://localhost:3000");
   });
 
@@ -15,28 +9,30 @@ describe("Blog app", function () {
     cy.contains("Blog");
   });
 
-  it("login form can be opened", function () {
-    cy.contains("login").click();
-  });
+  describe("Login", function () {
+    it("login form shown", function () {
+      cy.contains("login");
+    });
 
-  it("user can log in", function () {
-    cy.contains("login").click();
+    it("succeds with correct credentials", function () {
+      cy.contains("login").click();
 
-    cy.get("#username").type("oaugusto");
-    cy.get("#password").type("otavio123");
+      cy.get("#username").type("oaugusto");
+      cy.get("#password").type("otavio123");
 
-    cy.get("#login-button").click();
+      cy.get("#login-button").click();
 
-    cy.contains("User: Otavio Augusto is logged.");
-  });
+      cy.contains("User: Otavio Augusto is logged.");
+    });
 
-  it("login fails with wrong password", function () {
-    cy.contains("login").click();
-    cy.get("#username").type("mluukkai");
-    cy.get("#password").type("wrong");
-    cy.get("#login-button").click();
+    it("fails with wrong password", function () {
+      cy.contains("login").click();
+      cy.get("#username").type("mluukkai");
+      cy.get("#password").type("wrong");
+      cy.get("#login-button").click();
 
-    cy.contains("wrong credentials");
+      cy.contains("wrong credentials");
+    });
   });
 
   describe("when logged in", function () {
@@ -70,6 +66,12 @@ describe("Blog app", function () {
       cy.get("#post-like-button").click();
 
       cy.contains("Likes: 11");
+    });
+
+    it.only("a post can be deleted", () => {
+      cy.contains("Delete").click();
+
+      cy.contains("post successfully deleted");
     });
   });
 });

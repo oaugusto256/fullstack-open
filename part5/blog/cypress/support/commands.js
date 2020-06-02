@@ -34,3 +34,11 @@ Cypress.Commands.add("login", ({ username, password }) => {
     cy.visit("http://localhost:3000");
   });
 });
+
+Cypress.Commands.add("createUser", () => {
+  cy.request("POST", "http://localhost:3003/api/users/", {
+    name: "Otavio Augusto",
+    username: "oaugusto",
+    password: "otavio123"
+  });
+});

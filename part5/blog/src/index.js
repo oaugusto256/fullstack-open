@@ -93,7 +93,12 @@ const App = () => {
         .then(() => {
           const postsWithoutPostRemoved = posts.filter(post => post.id !== postObject.id);
 
+          setNotification("post successfully deleted");
           setPosts(postsWithoutPostRemoved);
+
+          setTimeout(() => {
+            setNotification(null);
+          }, 2500);
         });
     }
   };
