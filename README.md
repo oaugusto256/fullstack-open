@@ -48,7 +48,7 @@ In this part, we will continue our work on the backend. Our first major theme wi
  3. User administration
  4. Token authentication
 
-#### part5 - Testing React apps :black_square_button:
+#### part5 - Testing React apps :white_check_mark:
 
 In this part we return to the frontend, first looking at different possibilities for testing the React code. We will also implement token based authentication which will enable users to log in to our application.
 
@@ -57,7 +57,7 @@ In this part we return to the frontend, first looking at different possibilities
  3. Testing React apps
  4. End to end testing
 
-#### part6 - State management with Redux :black_square_button:
+#### part6 - State management with Redux
 
 So far, we have placed the application's state and state logic directly inside React-components. When applications grow larger, state management should be moved outside React-components. In this part, we will introduce the Redux-library, which is currently the most popular solution for managing the state of React-applications.
 
@@ -66,7 +66,7 @@ So far, we have placed the application's state and state logic directly inside R
  3. Communicating with server in redux application
  4. connect `react-redux`
 
-#### part7 - React router, custom hooks, styling app with CSS and webpack :black_square_button:
+#### part7 - React router, custom hooks, styling app with CSS and webpack
 
 The seventh part of the course touches on several different themes. First, we'll get familiar with React router. React router helps us divide the application into different views that are shown based on the URL in the browser's address bar. After this, we'll look at a few more ways to add CSS-styles to React applications. During the entire course we've used create-react-app to generate the body of our applications. This time we'll take a look under the hood: we'll learn how Webpack works and how we can use it to configure the application ourselves. We shall also have a look on hook-functions and how to define a custom hook.
 
@@ -77,7 +77,7 @@ The seventh part of the course touches on several different themes. First, we'll
  5. Class components, miscellaneous
  6. Exercises: extending the bloglit
 
-#### part8 - GraphQL :black_square_button:
+#### part8 - GraphQL
 
 This part of the course is about GraphQL, Facebook's alternative to REST for communication between browser and a server.
 
@@ -87,7 +87,7 @@ This part of the course is about GraphQL, Facebook's alternative to REST for com
  4. Login and updating the cache
  5. Fragments and subscriptions
 
-#### part9 - Typescript :black_square_button:
+#### part9 - Typescript
 
 This part is all about TypeScript: and open-source typed superset of JavaScript developed by Microsoft that compiles to plain JavaScript.
 
