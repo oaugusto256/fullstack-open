@@ -3,6 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import Anecdote from './components/Anecdote'
+import NewAnecdote from './components/NewAnecdote'
 
 const App = () => {
   const anecdotes = useSelector(state => state)
@@ -16,11 +17,7 @@ const App = () => {
           anecdote={anecdote}
         />
       )}
-      <h2>create new</h2>
-      <form>
-        <div><input /></div>
-        <button>create</button>
-      </form>
+      <NewAnecdote />
     </div>
   )
 }
