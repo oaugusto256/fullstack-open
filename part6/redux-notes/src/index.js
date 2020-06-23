@@ -2,22 +2,29 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
 import { noteReducer } from './reducers/noteReducer'
+import { filterReducer } from './reducers/filterReducer'
 
 import Notes from './components/Notes';
 import NewNote from './components/NewNote'
+import VisibilityFilter from './components/VisibilityFilter'
 
+const reducer = combineReducers({
+  notes: noteReducer,
+  filter: filterReducer
+})
 
-const store = createStore(noteReducer)
+const store = createStore(reducer)
 
 const App = () => {
   return (
-    <div>
+    <>
       <NewNote />
+      <VisibilityFilter />
       <Notes />
-    </div>
+    </>
   )
 }
 
@@ -29,7 +36,7 @@ const renderApp = () => {
     document.getElementById('root'))
 }
 
-renderApp()
+renderApp();
 
 store.subscribe(renderApp)
 store.subscribe(() => {
