@@ -13,6 +13,8 @@ const noteReducer = (state = [], action) => {
         note.id !== id ? note : changedNote
       )
     }
+    case 'INIT_NOTES':
+      return action.data
     default:
       return state
   }
@@ -21,14 +23,17 @@ const noteReducer = (state = [], action) => {
 const generateId = () =>
   Number((Math.random() * 1000000).toFixed(0))
 
-const createNote = (content) => {
+const initializeNotes = (notes) => {
+  return {
+    type: 'INIT_NOTES',
+    data: notes,
+  }
+}
+
+const createNote = (data) => {
   return {
     type: 'NEW_NOTE',
-    data: {
-      content,
-      important: false,
-      id: generateId()
-    }
+    data
   }
 }
 
@@ -40,7 +45,8 @@ const toggleImportanceOf = (id) => {
 }
 
 export {
-  createNote,
   noteReducer,
-  toggleImportanceOf
+  createNote,
+  toggleImportanceOf,
+  initializeNotes,
 };
