@@ -41,10 +41,15 @@ const createAnecdote = (anecdote) => {
   }
 }
 
-const vote = (id) => {
-  return {
-    type: 'VOTE',
-    data: { id }
+const vote = (anecdote) => {
+  return async dispatch => {
+    const anecdoteUpdated = { ...anecdote, votes: anecdote.votes + 1 };
+    const data = await anecdoteService.update(anecdoteUpdated);
+
+    dispatch({
+      type: 'VOTE',
+      data: { id: data.id }
+    });
   }
 }
 
