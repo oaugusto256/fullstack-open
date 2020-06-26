@@ -9,14 +9,11 @@ import Filter from './components/Filter'
 
 import { initializeAnecdotes } from './reducers/anecdoteReducer'
 
-import anecdotesService from './services/anecdotes'
-
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    anecdotesService
-      .getAll().then(notes => dispatch(initializeAnecdotes(notes)))
+    dispatch(initializeAnecdotes());
   }, [dispatch]);
 
   return (

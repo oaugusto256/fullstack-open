@@ -22,7 +22,7 @@ const noteReducer = (state = [], action) => {
   }
 }
 
-const initializeNotes = (notes) => {
+const initializeNotes = () => {
   return async dispatch => {
     const notes = await noteService.getAll();
     dispatch({
