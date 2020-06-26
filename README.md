@@ -57,7 +57,7 @@ In this part we return to the frontend, first looking at different possibilities
  3. Testing React apps
  4. End to end testing
 
-#### part6 - State management with Redux
+#### part6 - State management with Redux :white_check_mark:
 
 So far, we have placed the application's state and state logic directly inside React-components. When applications grow larger, state management should be moved outside React-components. In this part, we will introduce the Redux-library, which is currently the most popular solution for managing the state of React-applications.
 
