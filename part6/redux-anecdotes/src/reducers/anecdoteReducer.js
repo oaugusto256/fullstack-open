@@ -31,10 +31,13 @@ const initializeAnecdotes = () => {
   }
 }
 
-const createAnecdote = (data) => {
-  return {
-    type: 'NEW_ANECDOTE',
-    data
+const createAnecdote = (anecdote) => {
+  return async dispatch => {
+    const data = await anecdoteService.createNew(anecdote);
+    dispatch({
+      type: 'NEW_ANECDOTE',
+      data
+    })
   }
 }
 
