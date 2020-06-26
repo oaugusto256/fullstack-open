@@ -3,6 +3,8 @@ const initialState = {
   message: "",
 }
 
+const SECONDS_TO_MILISECONDS = 1000;
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SHOW_NOTIFICATION':
@@ -17,12 +19,18 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const showNotification = (message) => {
-  return {
-    type: 'SHOW_NOTIFICATION',
-    data: {
-      message
-    }
+const showNotification = (message, secondsToDisappear) => {
+  return async dispatch => {
+    dispatch({
+      type: 'SHOW_NOTIFICATION',
+      data: {
+        message
+      }
+    });
+
+    setTimeout(() => {
+      dispatch({ type: 'RESET_STATE' });
+    }, secondsToDisappear * SECONDS_TO_MILISECONDS);
   }
 }
 
