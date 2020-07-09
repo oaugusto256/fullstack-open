@@ -3,17 +3,18 @@ import React, { useState } from 'react'
 import { Switch, Route, Link } from "react-router-dom";
 
 import { useField } from "./hooks";
+import { Button, Input, Navigation, Page, Footer as StyledFooter } from './components';
 
 const Menu = () => {
   const padding = {
     paddingRight: 5
   }
   return (
-    <>
+    <Navigation>
       <Link to='/' style={padding}>anecdotes</Link>
       <Link to='/create' style={padding}>create new</Link>
       <Link to='/about' style={padding}>about</Link>
-    </>
+    </Navigation>
   )
 }
 
@@ -41,11 +42,11 @@ const About = () => (
 )
 
 const Footer = () => (
-  <div>
+  <StyledFooter>
     Anecdote app for <a href='https://courses.helsinki.fi/fi/tkt21009'>Full Stack -websovelluskehitys</a>.
 
     See <a href='https://github.com/fullstack-hy2020/routed-anecdotes/blob/master/src/App.js'>https://github.com/fullstack-hy2019/routed-anecdotes/blob/master/src/App.js</a> for the source code.
-  </div>
+  </StyledFooter>
 )
 
 const CreateNew = (props) => {
@@ -76,18 +77,18 @@ const CreateNew = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input name='content' value={content.value} onChange={content.onChange} />
+          <Input name='content' value={content.value} onChange={content.onChange} />
         </div>
         <div>
           author
-          <input name='author' value={author.value} onChange={author.onChange} />
+          <Input name='author' value={author.value} onChange={author.onChange} />
         </div>
         <div>
           url for more info
-          <input name='info' value={info.value} onChange={info.onChange} />
+          <Input name='info' value={info.value} onChange={info.onChange} />
         </div>
-        <button>create</button>
-        <button onClick={clearAll}>reset</button>
+        <Button>create</Button>
+        <Button onClick={clearAll}>reset</Button>
       </form>
     </div>
   )
@@ -134,7 +135,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <Page>
       <h1>Software anecdotes</h1>
       <Menu />
       <Switch>
@@ -149,7 +150,7 @@ const App = () => {
         </Route>
       </Switch>
       <Footer />
-    </>
+    </Page>
   )
 }
 
