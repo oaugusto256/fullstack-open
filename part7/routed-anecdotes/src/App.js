@@ -62,7 +62,13 @@ const CreateNew = (props) => {
       info: info.value,
       votes: 0
     })
-  }
+  };
+
+  const clearAll = () => {
+    content.reset();
+    author.reset();
+    info.reset();
+  };
 
   return (
     <div>
@@ -81,6 +87,7 @@ const CreateNew = (props) => {
           <input name='info' value={info.value} onChange={info.onChange} />
         </div>
         <button>create</button>
+        <button onClick={clearAll}>reset</button>
       </form>
     </div>
   )
