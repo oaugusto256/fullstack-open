@@ -1,8 +1,8 @@
 {
-  "name": "apollo-server-tutorial",
+  "name": "phonebook-apollo-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "apollo-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.15.1",
+    "graphql": "^15.3.0",
     "uuid": "^8.2.0"
   }
 }
