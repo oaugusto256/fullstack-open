@@ -2,6 +2,9 @@ import React from 'react';
 
 import { gql, useQuery } from '@apollo/client'
 
+import Persons from './components/Persons';
+import PersonForm from './components/PersonForm';
+
 const ALL_PERSONS = gql`
 query {
   allPersons  {
@@ -21,7 +24,8 @@ function App() {
 
   return (
     <div>
-      {result.data.allPersons.map(p => p.name).join(', ')}
+      <Persons persons={result.data.allPersons} />
+      <PersonForm />
     </div>
   )
 }
